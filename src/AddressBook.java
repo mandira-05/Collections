@@ -1,5 +1,5 @@
 
-
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -8,16 +8,21 @@ public class AddressBook implements AddressBookIF {
 
     Scanner scannerObject = new Scanner(System.in);
     Map<String, ContactPerson> contactList = new HashMap<String,ContactPerson>();
-    public static String addressBookName;
-    boolean isPresent = false;
+    public String addressBookName;
+    public boolean isPresent = false;
 
     public String getAddressBookName() {
         return addressBookName;
     }
 
-    public static void setAddressBookName(String addressBookName) {
-        AddressBook.addressBookName = addressBookName;
+    public void setAddressBookName(String addressBookName) {
+        this.addressBookName = addressBookName;
     }
+
+    public ArrayList<ContactPerson> getContact() {
+        return new ArrayList<ContactPerson>(contactList.values());
+    }
+
 
     @Override
     public void operation() {
@@ -99,6 +104,7 @@ public class AddressBook implements AddressBookIF {
 
             contactList.put(firstName.toLowerCase(), person);
         }
+
     }
 
     public void editPerson() {
